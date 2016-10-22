@@ -10,6 +10,10 @@
     <meta name="author" content="">
 
     <title>Care Messaging for the last ever Hackference</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/webcam.js"></script>
+
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +49,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#webcam">From you webcam</a>
+                        <a href="#webcam">From your webcam</a>
                     </li>
                     <li>
                         <a href="#question">Happier than Justin Beiber</a>
@@ -82,6 +86,27 @@
                 <span class="text-muted">Analysis from webcam</span>
             </h2>
             <p class="lead">Take a webcam picture</p>
+			<div>
+			<div id="my_camera" style="width:320px; height:240px;"></div>
+			<div id="my_result"></div>
+			<div id="catz"></div>
+			</div>
+			    <script language="JavaScript">
+        Webcam.attach( '#my_camera' );
+
+        function take_snapshot() {
+            Webcam.snap( function(data_uri) {
+                document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+				console.log(data_uri);
+				
+				document.getElementById('my_result').innerHTML= 'You look sad, here is a cat <br> <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>
+            } );
+			
+			
+        }
+    </script>
+
+    <a href="javascript:void(take_snapshot())">Take Snapshot</a>
         </div>
 
         <hr class="featurette-divider">
@@ -99,7 +124,7 @@
 
         <!-- Third Featurette -->
         <div class="featurette" id="code">
-            <img class="featurette-image img-circle img-responsive pull-right" src="images/question.jpg">
+            <img class="featurette-image img-circle img-responsive pull-right img-small" src="images/question.jpg">
             <h2 class="featurette-heading">I love this, where's the source code?
                 <span class="text-muted">Because we write code!</span>
             </h2>
