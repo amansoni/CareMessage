@@ -138,28 +138,33 @@
 				 })
 				 
 				.done(function(data) {
-					var levels=data[0].scores;
 					
-					var happiness = levels.happiness;
-					console.log(happiness);
+					var count = Object.keys(data).length;
 					
-					if	(happiness < 0.5) 
+					if (count > 0)
 					{
-						document.getElementById('my_result').innerHTML= 'You look sad (happiness ='+happiness+'), here is a cat <br> <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>';
+						var levels=data[0].scores;
+						
+						var happiness = levels.happiness;
+						console.log(happiness);
+						
+						if	(happiness < 0.5) 
+						{
+							document.getElementById('my_result').innerHTML= 'You look sad (happiness ='+happiness+'), here is a cat <br> <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif&api_key=MTI5OTMyS"></a>';
+						}
+						else
+						{
+							document.getElementById('my_result').innerHTML= 'You look great! Look sad and try again';
+						}
 					}
-					else
-					{
-						document.getElementById('my_result').innerHTML= 'You look great! Look sad and try again';
+					else{
+						document.getElementById('my_result').innerHTML= 'Hello, anyone there?  We can\'t seem to find a face.';
 					}
-					
-
-				
 				
 				})
 				.fail(function() {alert("error");});
-				
-
-				            } );
+					
+				} );
         }
 
 		</script>
