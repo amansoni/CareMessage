@@ -9,9 +9,15 @@ $settings = array(
     'consumer_secret' => "LPMEJaAuGKq9zrY9kKkBWWEUji5CaDKCv8cVARe8UIWutwSkrD"
 );
 
-
+if ($_REQUEST['bieber'])
+{
+$url = 'https://api.twitter.com/1.1/search/tweets.json';
+$getfield = '?q=@justinbieber filter:media';
+	
+} else {
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
 $getfield = '?q=#hf2016 @hackferencebrum filter:media';
+}
 $requestMethod = 'GET';
 
 $twitter = new TwitterAPIExchange($settings);
