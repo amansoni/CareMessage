@@ -136,7 +136,10 @@
 				 })
 				.done(function(data) {
 					console.log('success');
-					console.log(data);
+					console.log(data[0]);
+					$.each(data[0][1], function (i, v) {
+					console.log(i + ':' + v);
+					});
 				})
 				.fail(function() {alert("error");});
 
