@@ -37,9 +37,11 @@ foreach ($statuses as $status) {
                 $images[] = $image['media_url'];
             }
         }
-   }
+
 
 }
 
 
-echo var_dump($images);
+echo json_encode($images);
+
+}
