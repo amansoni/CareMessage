@@ -12,7 +12,7 @@ $settings = array(
 if ($_REQUEST['beiber'])
 {
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
-$getfield = '?q=#justin%20beiber filter:media';
+$getfield = '?q=@justinbieber filter:media';
 	
 } else {
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
