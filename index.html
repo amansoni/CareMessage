@@ -51,9 +51,10 @@
                     <li>
                         <a href="#webcam">From your webcam</a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="#question">Happier than Justin Beiber</a>
                     </li>
+					 -->
                     <li>
                         <a href="#code">Where to find the source code</a>
                     </li>
@@ -85,7 +86,7 @@
             <h2 class="featurette-heading">Do you need emotional care?
                 <span class="text-muted">Analysis from webcam</span>
             </h2>
-            <p class="lead">Take a webcam picture</p>
+            <p class="lead"><a href="javascript:take_snapshot()">Take webcam picture</a></p>
 			<div>
 			<div id="my_camera" style="width:320px; height:240px;"></div>
 			<div id="my_result"></div>
@@ -148,7 +149,7 @@
 					}
 					else
 					{
-						document.getElementById('my_result').innerHTML= 'You look great!';
+						document.getElementById('my_result').innerHTML= 'You look great! Look sad and try again';
 					}
 					
 
@@ -163,7 +164,7 @@
 
 		</script>
 
-    <a href="javascript:take_snapshot()">Take Snapshot</a>
+    
         </div>
 
         <hr class="featurette-divider">
@@ -172,10 +173,10 @@
 
         <div class="featurette" id="code">
             <img class="featurette-image img-circle img-responsive pull-right img-small" src="images/question.jpg">
-            <h2 class="featurette-heading">I love this, where's the source code? <a href="https://github.com/amansoni/CareMessage">On Github! </a>
+            <h2 class="featurette-heading">I love this, where's the source code? <br>
                 <span class="text-muted">Because we write code!</span>
             </h2>
-            <p class="lead">Github links</p>
+            <p class="lead"> <a href="https://github.com/amansoni/CareMessage">On Github! </a></p>
         </div>
 
         <hr class="featurette-divider">
