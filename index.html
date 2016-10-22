@@ -135,7 +135,9 @@
 
 					data: makeblob(data_uri)
 				 })
-				.done(function(data) {alert("success");})
+				.done(function(data) {
+					console.log(data);
+				})
 				.fail(function() {alert("error");});
 
 				document.getElementById('my_result').innerHTML= 'You look sad, here is a cat <br> <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>';
