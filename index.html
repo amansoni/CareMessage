@@ -119,7 +119,7 @@
         function take_snapshot() {
             Webcam.snap( function(data_uri) {
                 document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
-				//console.log(data_uri);
+				console.log(data_uri);
 
 				$.ajax({
 					url: 'https://api.projectoxford.ai//emotion/v1.0/recognize',
@@ -128,23 +128,37 @@
 					contentType: 'application/octet-stream',
 
                     beforeSend: function(xhrObj){
-					// Request headers
-					xhrObj.setRequestHeader("Content-Type","application/octet-stream");
-					xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","86f6b48e641941439d621bd9a8d80a3d");
-					},
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","application/octet-stream");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","86f6b48e641941439d621bd9a8d80a3d");
+            },
+
 					data: makeblob(data_uri)
 				 })
+				 
 				.done(function(data) {
-					console.log('success');
-					console.log(data[0]);
-					$.each(data[0][1], function (i, v) {
-					console.log(i + ':' + v);
-					});
+					var levels=data[0].scores;
+					
+					var happiness = levels.happiness;
+					console.log(happiness);
+					
+					if	(happiness < 0.5) 
+					{
+						document.getElementById('my_result').innerHTML= 'You look sad (happiness ='+happiness+'), here is a cat <br> <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>';
+					}
+					else
+					{
+						document.getElementById('my_result').innerHTML= 'You look great!';
+					}
+					
+
+				
+				
 				})
 				.fail(function() {alert("error");});
+				
 
-				document.getElementById('my_result').innerHTML= 'You look sad, here is a cat <br> <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>';
-            } );
+				            } );
         }
 
 		</script>
