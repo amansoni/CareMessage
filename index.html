@@ -117,7 +117,6 @@
         }
 
         function take_snapshot() {
-
             Webcam.snap( function(data_uri) {
                 document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
 				console.log(data_uri);
@@ -127,11 +126,13 @@
 					type: 'POST',
 					processData: false,
 					contentType: 'application/octet-stream',
+
                     beforeSend: function(xhrObj){
                 // Request headers
                 xhrObj.setRequestHeader("Content-Type","application/octet-stream");
                 xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","86f6b48e641941439d621bd9a8d80a3d");
             },
+
 					data: makeblob(data_uri)
 				 })
 				.done(function(data) {alert("success");})
