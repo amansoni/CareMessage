@@ -9,7 +9,7 @@ $settings = array(
     'consumer_secret' => "LPMEJaAuGKq9zrY9kKkBWWEUji5CaDKCv8cVARe8UIWutwSkrD"
 );
 
-if ($_REQUEST['beiber'])
+if ($_REQUEST['bieber'])
 {
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
 $getfield = '?q=@justinbieber filter:media';
