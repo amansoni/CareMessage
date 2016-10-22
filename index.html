@@ -150,7 +150,9 @@
 						
 						if	(happiness < 0.5) 
 						{
-							document.getElementById('my_result').innerHTML= 'You look sad (happiness ='+happiness+'), here is a cat <br> <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif&api_key=MTI5OTMyS"></a>';
+							var d = new Date();
+							var n = d.getTime();
+							document.getElementById('my_result').innerHTML= 'You look sad (happiness ='+happiness+'), here is a cat <br> <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif&api_key=MTI5OTMyS&time=' + n + '"></a>';
 						}
 						else
 						{
