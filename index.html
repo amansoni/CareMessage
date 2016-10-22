@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>Care Messaging for the last ever Hackference</title>
-	
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="js/webcam.js"></script>
 
@@ -115,9 +115,9 @@
 
             return new Blob([uInt8Array], { type: contentType });
         }
-		
+
         function take_snapshot() {
-			saveImage('');
+
             Webcam.snap( function(data_uri) {
                 document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
 				console.log(data_uri);
@@ -127,7 +127,12 @@
 					type: 'POST',
 					processData: false,
 					contentType: 'application/octet-stream',
-					data: makeblob(data_uri);
+                    beforeSend: function(xhrObj){
+                // Request headers
+                xhrObj.setRequestHeader("Content-Type","application/octet-stream");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","86f6b48e641941439d621bd9a8d80a3d");
+            },
+					data: makeblob(data_uri)
 				 })
 				.done(function(data) {alert("success");})
 				.fail(function() {alert("error");});
@@ -138,7 +143,7 @@
 
 		</script>
 
-    <a href="javascript:void(take_snapshot())">Take Snapshot</a>
+    <a href="javascript:take_snapshot()">Take Snapshot</a>
         </div>
 
         <hr class="featurette-divider">
