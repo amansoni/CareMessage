@@ -9,10 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Care Messaging for the last ever Hackference</title>
+    <title>MOPADA.NET</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="js/webcam.js"></script>
 
 
     <!-- Bootstrap Core CSS -->
@@ -49,14 +48,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#webcam">From your webcam</a>
+                        <a href="#concept">The Concept</a>
                     </li>
-                    <!--<li>
-                        <a href="#question">Happier than Justin Beiber</a>
-                    </li>
-					 -->
                     <li>
-                        <a href="#code">Where to find the source code</a>
+                        <a href="#code">View Source</a>
                     </li>
                 </ul>
             </div>
@@ -69,8 +64,8 @@
     <header class="header-image">
         <div class="headline">
             <div class="container">
-                <h1>Care Messaging</h1>
-                <h2>Emotional support for the last ever hackference</h2>
+              <h1>MOPADA.NET</h1>
+              <h2>Mobile Patient Data Network</h2>
             </div>
         </div>
     </header>
@@ -81,98 +76,11 @@
         <hr class="featurette-divider">
 
         <!-- First Featurette -->
-        <div class="featurette" id="webcam">
-            <img class="featurette-image img-circle img-responsive pull-right" src="images/cartoon-webcam.jpg">
-            <h2 class="featurette-heading">Do you need emotional care?
-                <span class="text-muted">Analysis from webcam</span>
-            </h2>
-            <p class="lead"><a href="javascript:take_snapshot()">Take webcam picture</a></p>
-			<div>
-			<div id="my_camera" style="width:320px; height:240px;"></div>
-			<div id="my_result"></div>
-			<div id="catz"></div>
+        <div class="featurette" id="concept">
+          <h2 class="featurette-heading">The Concept</h2>
+            <img class="featurette-image img-responsive pull-right" src="images/main-idea.jpg">
 			</div>
-			    <script language="JavaScript">
-        Webcam.attach( '#my_camera' );
-
-		makeblob = function (dataURL) {
-            var BASE64_MARKER = ';base64,';
-            if (dataURL.indexOf(BASE64_MARKER) == -1) {
-                var parts = dataURL.split(',');
-                var contentType = parts[0].split(':')[1];
-                var raw = decodeURIComponent(parts[1]);
-                return new Blob([raw], { type: contentType });
-            }
-            var parts = dataURL.split(BASE64_MARKER);
-            var contentType = parts[0].split(':')[1];
-            var raw = window.atob(parts[1]);
-            var rawLength = raw.length;
-
-            var uInt8Array = new Uint8Array(rawLength);
-
-            for (var i = 0; i < rawLength; ++i) {
-                uInt8Array[i] = raw.charCodeAt(i);
-            }
-
-            return new Blob([uInt8Array], { type: contentType });
-        }
-
-        function take_snapshot() {
-            Webcam.snap( function(data_uri) {
-                document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
-				console.log(data_uri);
-
-				$.ajax({
-					url: 'https://api.projectoxford.ai//emotion/v1.0/recognize',
-					type: 'POST',
-					processData: false,
-					contentType: 'application/octet-stream',
-
-                    beforeSend: function(xhrObj){
-                // Request headers
-                xhrObj.setRequestHeader("Content-Type","application/octet-stream");
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","86f6b48e641941439d621bd9a8d80a3d");
-            },
-
-					data: makeblob(data_uri)
-				 })
-				 
-				.done(function(data) {
-					
-					var count = Object.keys(data).length;
-					
-					if (count > 0)
-					{
-						var levels=data[0].scores;
-						
-						var happiness = levels.happiness;
-						console.log(happiness);
-						
-						if	(happiness < 0.5) 
-						{
-							var d = new Date();
-							var n = d.getTime();
-							document.getElementById('my_result').innerHTML= 'You look sad (happiness ='+happiness+'), here is a cat <br> <a href="http://thecatapi.com"><img src="http://thecatapi.com/api/images/get?format=src&type=gif&api_key=MTI5OTMyS&time=' + n + '"></a>';
-						}
-						else
-						{
-							document.getElementById('my_result').innerHTML= 'You look great! Look sad and try again';
-						}
-					}
-					else{
-						document.getElementById('my_result').innerHTML= 'Hello, anyone there?  We can\'t seem to find a face.';
-					}
-				
-				})
-				.fail(function() {alert("error");});
-					
-				} );
-        }
-
-		</script>
-
     
-        </div>
 
         <hr class="featurette-divider">
 
