@@ -1,7 +1,8 @@
-# [Care Message]
+# MObile PAtient DatA
 
- Are you sad that this is the last ever hackference? Need some cheering up?
- 
- Use our service to check whether you need to be cheered up!
+This service provides an easy way for medical staff to view and capture patient information using their mobile devices.
 
+## Accessing Patient Information
+
+## Adding Notes to Patient Information 
 
